@@ -1,4 +1,4 @@
-{"personas":[
+{"personas": [
     {"izanagi": {
         "name": "Izanagi",
         "arcana": 0,
@@ -69,6 +69,6 @@
             "evil touch" ],
         "inCompendium": 0,
         "isCurrent": 0}
-        },
-    ]}
-
+        }
+    ]
+}
