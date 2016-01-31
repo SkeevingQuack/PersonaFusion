@@ -1,0 +1,74 @@
+{"personas":[
+    {"izanagi": {
+        "name": "Izanagi",
+        "arcana": 0,
+        "description": "One of the ancient gods who existed before Japan was formed. He created the Ouyashima from chaos, then gave birth to countless children and laid the foundation of soil and nature.",
+        "inheritance": "electricity",
+        "vulnerabilities": {
+            "physical": "none",
+            "fire": "none",
+            "ice": "none",
+            "electricity": "resist",
+            "wind": "weak",
+            "light": "none",
+            "dark": "null"},
+        "skillList": [
+            {"zio": 1},
+            {"cleave": 1},
+            {"rakukaja": 1},
+            {"rakunda": 3},
+            {"tarukaja": 5}],
+        "requiresMaxedLink": 0,
+        "requiresSpecialFusion": 0,
+        "baseLevel": 1,
+        "baseStats": {
+            "strength": 3,
+            "magic": 2,
+            "endurance": 2,
+            "agility": 3,
+            "luck": 2},
+        "baseSkills": [
+            "zio",
+            "cleave",
+            "rakukaja"],
+        "inCompendium": 0,
+        "isCurrent": 0}
+        },
+    {"yomotsu-shikome": {
+        "name": "Yomotus-Shikome",
+        "arcana": 0,
+        "description": "A demoness in Japanese mythology that lives in Yomi, the netherworld. She is the first demon Izanami sends after Izanagi.",
+        "inheritance": "ailment",
+        "vulnerabilities": {
+            "physical": "none",
+            "fire": "weak",
+            "ice": "resist",
+            "electricity": "none",
+            "wind": "none",
+            "light": "none",
+            "dark": "none"},
+        "skillList": [
+            {"poisma": 7},
+            {"skewer": 7},
+            {"evil touch": 7},
+            {"sukunda": 9},
+            {"mudo": 10},
+            {"ghastly wail": 11}],
+        "requiresMaxedLink": 0,
+        "requiresSpecialFusion": 0,
+        "baseLevel": 7,
+        "baseStats": {
+            "strength": 2,
+            "magic": 7,
+            "endurance": 7,
+            "agility": 8,
+            "luck": 4},
+        "baseSkills": [
+            "poisma",
+            "skewer",
+            "evil touch" ],
+        "inCompendium": 0,
+        "isCurrent": 0}
+        },
+    ]}
+
