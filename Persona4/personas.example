@@ -1,5 +1,5 @@
-{"personas": [
-    {"izanagi": {
+personas = [
+    izanagi: {
         "name": "Izanagi",
         "arcana": 0,
         "description": "One of the ancient gods who existed before Japan was formed. He created the Ouyashima from chaos, then gave birth to countless children and laid the foundation of soil and nature.",
@@ -32,9 +32,8 @@
             "cleave",
             "rakukaja"],
         "inCompendium": 0,
-        "isCurrent": 0}
-        },
-    {"yomotsu-shikome": {
+        "isCurrent": 0},
+    yomotsu-shikome: {
         "name": "Yomotus-Shikome",
         "arcana": 0,
         "description": "A demoness in Japanese mythology that lives in Yomi, the netherworld. She is the first demon Izanami sends after Izanagi.",
@@ -69,6 +68,4 @@
             "evil touch" ],
         "inCompendium": 0,
         "isCurrent": 0}
-        }
     ]
-}
