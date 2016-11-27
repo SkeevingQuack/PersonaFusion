@@ -1,226 +1,229 @@
-from urllib import request
+from urllib import request, error
 from bs4 import BeautifulSoup
-from sys import argv
-
+from time import sleep
 import pickle
+import csv
 
-list_location = "personas.txt"
+import persona
+import translate
 
-def log(msg):
-    with open("errors.log", mode="a") as logfile:
-        logfile.write(msg + '\n')
+def main():
+    sluglist = []
+    with open("slugs.csv", newline='', encoding='utf-8') as slugfile:
+        slugreader = csv.reader(slugfile, skipinitialspace=True)
+        for row in slugreader:
+            sluglist.append(tuple(row))
 
-class Persona:
-    def __init__(self, name, slug):
-        self.name = name
-        self.slug = slug
+    personas = []
+    for row in sluglist:
+        current_persona = persona.Persona(*row)
 
-    def __str__(self):
-        return self.name
+        if current_persona.slug == '?':
+            personas.append(current_persona)
+            continue
 
-    def init_basics(self, lv, arcana, strength, magic, endurance, agility, luck):
-        self.lv = lv
-        self.arcana = self.translate(arcana)
-        self.strength = strength
-        self.magic = magic
-        self.endurance = endurance
-        self.agility = agility
-        self.luck = luck
+        address = current_persona.wiki.format(current_persona.slug)
+        print("{}, opening {}".format(current_persona, address))
+        try:
+            page = request.urlopen(address)
+        except error.URLError as err:
+            msg = "Page for {} was unable to be retrieved:".format(row)
+            errlog("{}\n{}".format(err, msg))
+            personas.append(current_persona)
+            continue
 
-    def init_types(self, phys, ranged, fire, ice, electric, wind, psy, nuclear, light, curse):
-        self.phys = self.translate(phys)
-        self.ranged = self.translate(ranged)
-        self.fire = self.translate(fire)
-        self.ice = self.translate(ice)
-        self.electric = self.translate(electric)
-        self.wind = self.translate(wind)
-        self.psy = self.translate(psy)
-        self.nuclear = self.translate(nuclear)
-        self.light = self.translate(light)
-        self.curse = self.translate(curse)
+        soup = BeautifulSoup(page, "html.parser")
 
-    def init_skills(self, *skills):
-        """(name, lv)"""
-        self.skills = []
-        for skill in skills:
-            self.skills.append(self.translate(skill[0]), self.translate(skill[1]))
+        current = soup.find(id='content_1_0')
+        current_persona.alt_names = [list(current.strings)[0].strip()]
 
-    def translate(self, phrase):
-        if phrase.isdecimal():
-            print("decimal {}".format(phrase))
-            return phrase
+        current = current.parent
+        tables = current.find_all(class_='ie5')
 
-        elif phrase == "愚者":
-            return "Fool"
-        elif phrase == "魔術師":
-            return "Magician"
-        elif phrase == "女教皇":
-            return "Priestess"
-        elif phrase == "女帝":
-            return "Empress"
-        elif phrase == "皇帝":
-            return "Emperor"
-        elif phrase == "法王":
-            return "Hierophant"
-        elif phrase == "恋愛":
-            return "Lovers"
-        elif phrase == "戦車":
-            return "Chariot"
-        elif phrase == "正義":
-            return "Justice"
-        elif phrase == "隠者":
-            return "Hermit"
-        elif phrase == "運命":
-            return "Fortune"
-        elif phrase == "剛毅":
-            return "Strength"
-        elif phrase == "刑死者":
-            return "Hanged Man"
-        elif phrase == "死神":
-            return "Death"
-        elif phrase == "節制":
-            return "Temperance"
-        elif phrase == "悪魔":
-            return "Devil"
-        elif phrase == "塔":
-            return "Tower"
-        elif phrase == "星":
-            return "Star"
-        elif phrase == "月":
-            return "Moon"
-        elif phrase == "太陽":
-            return "Sun"
-        elif phrase == "審判":
-            return "Judgement"
+        try:
+            current = tables[0].table
+        except IndexError:
+            errlog("{}'s page contains no tables".format(current_persona))
+            personas.append(current_persona)
+            continue
+        heads = current.thead.find_all('td')
+        bodies = current.tbody.find_all('td')
+        basics_match(heads, bodies, current_persona)
 
-        elif phrase == "\u2212":
-            return "-"
-        elif phrase == "弱":
-            return "weak"
-        elif phrase == "耐":
-            return "strng"
-        elif phrase == "無":
-            return "null"
-        elif phrase == "反":
-            return "repel"
-        elif phrase == "吸":
-            return "absrb"
+        try:
+            current = tables[1].table
+        except IndexError:
+            errlog("{}'s page contains but one table".format(current_persona))
+            personas.append(current_persona)
+            continue
+        heads = current.thead.find_all('td')
+        bodies = current.tbody.find_all('td')
+        resistances_match(heads, bodies, current_persona)
 
-        elif phrase == "初期":
-            return "initial"
+        try:
+            current = tables[2].table
+        except IndexError:
+            errlog("{}'s page contains but two table".format(current_persona))
+            personas.append(current_persona)
+            continue
+        heads = current.thead.find_all('td')
+        body_rows = current.tbody.find_all('tr')
+        skills_match(heads, body_rows, current_persona)
 
-        else:
-            log("Untranslateable: " + str(phrase))
-            return phrase
+        personas.append(current_persona)
+        sleep(2) # sleep 2 seconds as a rate-limit
 
-    def full_persona(self):
-        if self.slug == '?':
-            return "Name: {}, Slug: ?".format(self.name)
+    with open('personas.pickle', mode='wb') as picklefile:
+        pickle.dump(personas, picklefile)
 
-        msg = r"""
-/-----------------------------------------------------------\
-| Name: {name:<31}| {arcana:<13}| {lv:<4}|
-|-----------------------------------------------------------|
-|phys |range|fire |ice  |elec |wind |psy  |nuke |light|curse|
-|{phys:<5}|{ranged:<5}|{fire:<5}|{ice:<5}|{electric:<5}|{wind:<5}|{psy:<5}|{nuclear:<5}|{light:<5}|{curse:<5}|
-|-----------------------------------------------------------|
-|  Strength|{strength:>3}| Skill name:                      | SP | LV |
-|     Magic|{magic:>3}| {skill1:<33}|{cost1:>3} |{lv1:>3} |
-| Endurance|{endurance:>3}| -                                |  - |  - |
-|   Agility|{agility:>3}| -                                |  - |  - |
-|      Luck|{luck:>3}| -                                |  - |  - |
-\-----------------------------------------------------------/
-"""
-        msg = msg.strip()
-        mapping = {'skill1':'-', 'cost1':'-', 'lv1':'-'}
-        mapping = {**mapping, **self.__dict__}
 
-        return msg.format_map(mapping)
+def errlog(msg):
+    print(msg)
+    with open('errors.log', mode='a', encoding='utf-8') as file:
+        file.write("-- {}\n".format(msg))
 
-    def scrape_spwiki(self):
-        address = "http://spwiki.net/persona5/wikis/" + str(self.slug) + ".html"
-        page = request.urlopen(address)
-        soup = BeautifulSoup(page, 'html.parser')
+def strip_td(td):
+    try:
+        return td.string.strip()
+    except AttributeError:
+        return td.string
 
-        tables = soup.find_all('table')
+def basics_match(heads, bodies, sona):
+    heads = list(map(strip_td, heads))
+    bodies = list(map(strip_td, bodies))
+    sona.stats = persona.Stats()
 
-        table = tables[0]
-        if table.tr.td.contents[0] == "Lv":
-            row = table.find_all('tr')[1]
-            try:
-                contents = list(map(lambda x:x.contents[0], row.find_all('td')))
-            except IndexError:
-                return
-            try:
-                self.init_basics(*contents)
-            except TypeError:
-                self.init_basics(*contents[:2],*contents[3:8])
-        else:
-            log("Expected Lv, found " + table.tr.td.contents[0])
-
-        table = tables[1]
-        if table.tr.td.contents[0] == "物":
-            row = table.find_all('tr')[1]
-            self.init_types(*map(lambda x:x.contents[0], row.find_all('td')))
-        else:
-            log("Expected 物, found " + table.tr.td.contents[0])
-
-        """
-        table = tables[2]
-        correct_table = False
-        skills = []
-        for row in table.find_all('tr'):
-            if correct_table:
-                skills.append( (row.td.contents[0], row.find_all('td')[5].contents[0]) )
-            elif row.td.contents[0] == "スキル名":
-                correct_table = True
+    for index, head in enumerate(heads):
+        try:
+            if not bodies[index]:
+                pass
+            elif head == "Lv":
+                sona.lvl = translate.number(bodies[index])
+            elif (head == "アルカナ" or head == "種族"):
+                sona.arcana = translate.arcana(bodies[index])
+            elif head == "シャドウ名":
+                pass
+            elif head == "力":
+                sona.stats.strength = translate.number(bodies[index])
+            elif head == "魔":
+                sona.stats.magic = translate.number(bodies[index])
+            elif head == "耐":
+                sona.stats.endurance = translate.number(bodies[index])
+            elif head == "速":
+                sona.stats.agility = translate.number(bodies[index])
+            elif head == "運":
+                sona.stats.luck = translate.number(bodies[index])
             else:
-                log("Expected スキル名, found " + table.td.contents[0])
-        #TODO: skills
-        """
+                loc = "While scraping basics for {}:".format(sona)
+                msg = "header '{}' was not recognized.".format(head)
+                errlog("{}\n{}".format(loc, msg))
+        except translate.UnknownPhraseError as err:
+            loc = "While scraping basics for {}:".format(sona)
+            msg = "translate couldn't find a {1} match for {0}."
+            errlog("{}\n{}".format(loc, msg.format(*err.args)))
 
+    if '?' in sona.stats.__dict__.values():
+        sona.stats = '?'
 
-sluglist = []
-unknownlist = []
-with open('slugs.csv', mode='r') as slugfile:
-    for line in slugfile:
-        pair = line.split(',')
-        pair = (pair[0].strip(' "'), pair[1].strip(' "\n'))
+def resistances_match(heads, bodies, sona):
+    heads = list(map(strip_td, heads))
+    bodies = list(map(strip_td, bodies))
+    sona.resistances = persona.Resistances()
+
+    for index, head in enumerate(heads):
         try:
-            pair = (pair[0], int(pair[1]))
-            sluglist.append(pair)
-        except ValueError:
-            unknownlist.append(pair)
+            if not bodies[index]:
+                pass
+            elif head == "物":
+                sona.resistances.physical = translate.resistance(bodies[index])
+            elif head == "銃":
+                sona.resistances.ranged = translate.resistance(bodies[index])
+            elif head == "火":
+                sona.resistances.fire = translate.resistance(bodies[index])
+            elif head == "氷":
+                sona.resistances.ice = translate.resistance(bodies[index])
+            elif head == "電":
+                sona.resistances.electric = translate.resistance(bodies[index])
+            elif head == "風":
+                sona.resistances.wind = translate.resistance(bodies[index])
+            elif head == "念":
+                sona.resistances.psy = translate.resistance(bodies[index])
+            elif head == "核":
+                sona.resistances.nuclear = translate.resistance(bodies[index])
+            elif head == "祝":
+                sona.resistances.light = translate.resistance(bodies[index])
+            elif head == "呪":
+                sona.resistances.curse = translate.resistance(bodies[index])
+            else:
+                loc = "While scraping resistances for {}:".format(sona)
+                msg = "header '{}' was not recognized.".format(head)
+                errlog("{}\n{}".format(loc, msg))
+        except translate.UnknownPhraseError as err:
+            loc = "While scraping resistances for {}:".format(sona)
+            msg = "translate couldn't find a {1} match for {0}."
+            errlog("{}\n{}".format(loc, msg.format(*err.args)))
 
-personas = []
+    values = sona.resistances.__dict__.values()
+    if '?' in values and not all(x == '?' for x in values):
+        for attribute, value in sona.resistances.__dict__.items():
+            if value == '?':
+                setattr(sona, attribute, '-')
 
-for line in sluglist + unknownlis:t
-    personas.append(Persona(*line))
+def skills_match(heads, rows, sona):
+    if len(rows) < 2:
+        return
 
-"""
-open('personas.txt', mode='w').close()
+    heads = list(map(strip_td, heads))
+    headlist = {}
+    for index, head in enumerate(heads):
+        if head == "スキル名":
+            headlist['name'] = index
+        elif head == "属性":
+            headlist['attribute'] = index
+        elif "SP" in head:
+            headlist['cost'] = index
+        elif head == "対象":
+            headlist['target'] = index
+        elif "Lv" in head:
+            headlist['lvl'] = index
+        elif head == "効果":
+            pass
+        else:
+            loc = "While scraping skills for {}:".format(sona)
+            msg = "header '{}' was not recognized.".format(head)
+            errlog("{}\n{}".format(loc, msg))
 
-for line in sluglist:
-    print(line)
-    current = Persona(*line)
-    current.scrape_spwiki()
-    personas.append(current)
-    with open('personas.txt', mode='a') as f:
-        try:
-            f.write(current.full_persona() + '\n\n')
-        except KeyError:
-            f.write("Name: {}, Slug: {}\n\n".format(current.name, current.slug))
+    sona.skills = []
 
-for line in unknownlist:
-    print(line)
-    current = Persona(*line)
-    personas.append(current)
-    with open('personas.txt', mode='a') as f:
-        f.write(current.full_persona() + '\n\n')
-"""
+    for row in rows:
+        current = persona.PersonaSkill()
+        row = list(map(strip_td, row.find_all('td')))
+        for label, column in headlist.items():
+            try:
+                if not row[column]:
+                    pass
+                elif label == "name":
+                    current.name = row[column]
+                elif label == "attribute":
+                    current.attribute = translate.attribute(row[column])
+                elif label == "cost":
+                    current.cost = translate.cost(row[column])
+                elif label == "target":
+                    current.target = translate.target(row[column])
+                elif label == "lvl":
+                    current.lvl = translate.skill_lvl(row[column])
+                else:
+                    loc = "For {}'s skills,".format(sona)
+                    msg = "{} is somehow in the headlist".format(label)
+                    errlog("{} {}".format(loc, msg))
+                    return
+            except translate.UnknownPhraseError as err:
+                loc = "While scraping skills for {}:".format(sona)
+                msg = "translate couldn't find a {1} match for {0}."
+                errlog("{}\n{}".format(loc, msg.format(*err.args)))
+        sona.skills.append(current)
 
 
-f = open('personas.pickle', mode='wb')
-pickle.dump(personas, f)
-f.close()
-
+if __name__ == "__main__":
+    errlog("-----------------------------------\n\n")
+    main()
