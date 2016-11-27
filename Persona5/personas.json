@@ -75,14 +75,14 @@
             {
                 "cost": "32 SP",
                 "name": "指弾",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one enemy",
                 "attribute": "ranged"
             },
             {
                 "cost": "8 SP",
                 "name": "スクンダ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one enemy",
                 "attribute": "support"
             },
@@ -217,21 +217,21 @@
             {
                 "cost": "?",
                 "name": "十文字斬り",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one enemy",
                 "attribute": "physical"
             },
             {
                 "cost": "8 SP",
                 "name": "ジオンガ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one enemy",
                 "attribute": "electric"
             },
             {
                 "cost": "8 SP",
                 "name": "タルカジャ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one ally",
                 "attribute": "support"
             },
@@ -493,14 +493,14 @@
             {
                 "cost": "8 SP",
                 "name": "アギラオ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one enemy",
                 "attribute": "fire"
             },
             {
                 "cost": "5 SP",
                 "name": "不吉な言葉",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one enemy",
                 "attribute": "ailment"
             },
@@ -1083,21 +1083,21 @@
             {
                 "cost": "5 SP",
                 "name": "ドルミナー",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one enemy",
                 "attribute": "?"
             },
             {
                 "cost": "6 SP",
                 "name": "ガルーラ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one enemy",
                 "attribute": "wind"
             },
             {
                 "cost": "54 HP",
                 "name": "ドルミンラッシュ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "all enemies",
                 "attribute": "physical"
             },
@@ -2167,21 +2167,21 @@
             {
                 "cost": "?",
                 "name": "大切断",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one enemy",
                 "attribute": "physical"
             },
             {
                 "cost": "?",
                 "name": "バッドビート",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "all enemies",
                 "attribute": "physical"
             },
             {
                 "cost": "?",
                 "name": "レイズラッシュ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one enemy",
                 "attribute": "physical"
             },
@@ -2242,21 +2242,21 @@
             {
                 "cost": "?",
                 "name": "フレイダイン",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "?",
                 "attribute": "nuclear"
             },
             {
                 "cost": "?",
                 "name": "マカラブレイク",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "all enemies",
                 "attribute": "support"
             },
             {
                 "cost": "?",
                 "name": "スリープソング",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "?",
                 "attribute": "ailment"
             },
@@ -2448,21 +2448,21 @@
             {
                 "cost": "?",
                 "name": "マハラギ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "all enemies",
                 "attribute": "fire"
             },
             {
                 "cost": "?",
                 "name": "タルカジャ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one ally",
                 "attribute": "support"
             },
             {
                 "cost": "?",
                 "name": "コーチング",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "self",
                 "attribute": "passive"
             },
@@ -3027,7 +3027,7 @@
                 "cost": "24 SP",
                 "name": "マハラクンダ",
                 "lvl": "19",
-                "target": "?",
+                "target": "all enemies",
                 "attribute": "support"
             },
             {
@@ -3148,21 +3148,21 @@
             {
                 "cost": "6 SP",
                 "name": "ガルーラ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one enemy",
                 "attribute": "wind"
             },
             {
                 "cost": "24 SP",
                 "name": "マハスクカジャ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "all allies",
                 "attribute": "support"
             },
             {
                 "cost": "15 SP",
                 "name": "疾風ガードキル",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "all enemies",
                 "attribute": "support"
             },
@@ -3518,21 +3518,21 @@
             {
                 "cost": "4 SP",
                 "name": "ブフ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "?",
                 "attribute": "ice"
             },
             {
                 "cost": "4 SP",
                 "name": "エナジードロップ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one ally",
                 "attribute": "healing"
             },
             {
                 "cost": "18 SP",
                 "name": "防壁の嵐",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one ally",
                 "attribute": "ailment"
             },
@@ -3935,14 +3935,14 @@
             {
                 "cost": "18 HP",
                 "name": "突撃",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one enemy",
                 "attribute": "physical"
             },
             {
                 "cost": "5 SP",
                 "name": "デビルタッチ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one enemy",
                 "attribute": "?"
             },
@@ -4426,21 +4426,21 @@
             {
                 "cost": "8 SP",
                 "name": "ハマ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one enemy",
                 "attribute": "light"
             },
             {
                 "cost": "5 SP",
                 "name": "目眩し",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one enemy",
                 "attribute": "ailment"
             },
             {
                 "cost": "3 SP",
                 "name": "ディア",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one ally",
                 "attribute": "healing"
             },
@@ -5102,21 +5102,21 @@
             {
                 "cost": "?",
                 "name": "二連牙",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one enemy",
                 "attribute": "physical"
             },
             {
                 "cost": "8 SP",
                 "name": "ジオンガ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one enemy",
                 "attribute": "electric"
             },
             {
                 "cost": "?",
                 "name": "忘殺ラッシュ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "all enemies",
                 "attribute": "physical"
             },
@@ -5301,7 +5301,7 @@
                 "cost": "24 SP",
                 "name": "マハタルカジャ",
                 "lvl": "52",
-                "target": "?",
+                "target": "all allies",
                 "attribute": "support"
             },
             {
@@ -5651,11 +5651,11 @@
                 "attribute": "healing"
             },
             {
-                "cost": "?",
+                "cost": "6 SP",
                 "name": "アムリタドロップ",
                 "lvl": "55",
                 "target": "one ally",
-                "attribute": "?"
+                "attribute": "healing"
             },
             {
                 "cost": "24 SP",
@@ -5984,21 +5984,21 @@
             {
                 "cost": "?",
                 "name": "暴れまくり",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "all enemies",
                 "attribute": "physical"
             },
             {
                 "cost": "?",
                 "name": "カウンタ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "self",
                 "attribute": "passive"
             },
             {
                 "cost": "?",
                 "name": "指弾",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one enemy",
                 "attribute": "ranged"
             },
@@ -6052,21 +6052,21 @@
             {
                 "cost": "28 HP",
                 "name": "大切断",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one enemy",
                 "attribute": "physical"
             },
             {
                 "cost": "18 SP",
                 "name": "防嵐の壁",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one ally",
                 "attribute": "support"
             },
             {
                 "cost": "8 SP",
                 "name": "タルカジャ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one ally",
                 "attribute": "support"
             },
@@ -6317,21 +6317,21 @@
             {
                 "cost": "5 SP",
                 "name": "プリンパ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one enemy",
                 "attribute": "ailment"
             },
             {
                 "cost": "8 SP",
                 "name": "タルカジャ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one ally",
                 "attribute": "support"
             },
             {
                 "cost": "37 HP",
                 "name": "大切断",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one enemy",
                 "attribute": "physical"
             },
@@ -6343,11 +6343,11 @@
                 "attribute": "physical"
             },
             {
-                "cost": "?",
+                "cost": "13 HP",
                 "name": "ラッキーパンチ",
                 "lvl": "17",
                 "target": "one enemy",
-                "attribute": "?"
+                "attribute": "physical"
             },
             {
                 "cost": "37 HP",
@@ -6507,22 +6507,22 @@
                 "cost": "12 SP",
                 "name": "サイダイン",
                 "lvl": "?",
-                "target": "?",
+                "target": "one enemy",
                 "attribute": "psy"
             },
             {
                 "cost": "5 SP",
                 "name": "淀んだ空気",
                 "lvl": "?",
-                "target": "?",
-                "attribute": "?"
+                "target": "all",
+                "attribute": "almighty"
             },
             {
                 "cost": "12 SP",
                 "name": "デビルスマイル",
                 "lvl": "?",
                 "target": "all enemies",
-                "attribute": "?"
+                "attribute": "ailment"
             }
         ],
         "arcana": "Hanged Man",
@@ -7005,21 +7005,21 @@
             {
                 "cost": "24 SP",
                 "name": "メギドラ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "all enemies",
                 "attribute": "?"
             },
             {
                 "cost": "24 SP",
                 "name": "マハタルカジャ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "all allies",
                 "attribute": "?"
             },
             {
                 "cost": "22 SP",
                 "name": "マハジオダイン",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "all enemies",
                 "attribute": "?"
             },
@@ -7079,21 +7079,21 @@
             {
                 "cost": "34 SP",
                 "name": "マハムドオン",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "?",
                 "attribute": "curse"
             },
             {
                 "cost": "-",
                 "name": "ムド成功率UP",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "?",
                 "attribute": "passive"
             },
             {
                 "cost": "10 SP",
                 "name": "デクンダ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "?",
                 "attribute": "support"
             },
@@ -7160,14 +7160,14 @@
             {
                 "cost": "4 SP",
                 "name": "ブフ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one enemy",
                 "attribute": "ice"
             },
             {
                 "cost": "8 SP",
                 "name": "ラクンダ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one enemy",
                 "attribute": "support"
             },
@@ -7228,14 +7228,14 @@
             {
                 "cost": "3 SP",
                 "name": "ガル",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one enemy",
                 "attribute": "wind"
             },
             {
                 "cost": "?",
                 "name": "指弾",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "?",
                 "attribute": "ranged"
             },
@@ -7767,21 +7767,21 @@
             {
                 "cost": "?",
                 "name": "大切断",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one enemy",
                 "attribute": "physical"
             },
             {
                 "cost": "?",
                 "name": "ドルミンラッシュ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "all enemies",
                 "attribute": "physical"
             },
             {
                 "cost": "10 SP",
                 "name": "デカジャ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "all enemies",
                 "attribute": "support"
             },
@@ -8099,21 +8099,21 @@
             {
                 "cost": "6 SP",
                 "name": "ガルーラ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one enemy",
                 "attribute": "wind"
             },
             {
                 "cost": "24 SP",
                 "name": "マハスクカジャ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "all allies",
                 "attribute": "support"
             },
             {
                 "cost": "?",
                 "name": "フラッシュボム",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "all enemies",
                 "attribute": "physical"
             },
@@ -8188,14 +8188,14 @@
             {
                 "cost": "8 SP",
                 "name": "ブフーラ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one enemy",
                 "attribute": "ice"
             },
             {
                 "cost": "?",
                 "name": "火炎見切り",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "self",
                 "attribute": "?"
             },
@@ -8669,14 +8669,14 @@
             {
                 "cost": "3 SP",
                 "name": "ガル",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one enemy",
                 "attribute": "wind"
             },
             {
                 "cost": "8 SP",
                 "name": "ラクンダ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one enemy",
                 "attribute": "support"
             },
@@ -8705,7 +8705,7 @@
                 "cost": "-",
                 "name": "恐怖率UP",
                 "lvl": "15",
-                "target": "?",
+                "target": "self",
                 "attribute": "passive"
             },
             {
@@ -9309,14 +9309,14 @@
             {
                 "cost": "10 SP",
                 "name": "マハエイハ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "all enemies",
                 "attribute": "curse"
             },
             {
                 "cost": "?",
                 "name": "脳天落とし",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one enemy",
                 "attribute": "physical"
             },
@@ -9636,21 +9636,21 @@
             {
                 "cost": "41 HP",
                 "name": "脳天落し",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one enemy",
                 "attribute": "physical"
             },
             {
                 "cost": "16 SP",
                 "name": "マハジオンガ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "all enemies",
                 "attribute": "ice"
             },
             {
                 "cost": "?",
                 "name": "感電率UP",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "?",
                 "attribute": "?"
             },
@@ -9696,21 +9696,21 @@
             {
                 "cost": "15 SP",
                 "name": "ムドオン",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "one enemy",
                 "attribute": "curse"
             },
             {
                 "cost": "24 SP",
                 "name": "マハラクンダ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "all enemies",
                 "attribute": "?"
             },
             {
                 "cost": "69 HP",
                 "name": "電光石火",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "all enemies",
                 "attribute": "physical"
             },
@@ -10043,48 +10043,48 @@
             {
                 "cost": "?",
                 "name": "テンタラフー",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "?",
                 "attribute": "?"
             },
             {
                 "cost": "?",
                 "name": "マハフレイラ",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "?",
                 "attribute": "?"
             },
             {
                 "cost": "?",
                 "name": "烈風波",
-                "lvl": "?",
+                "lvl": "innate",
                 "target": "?",
                 "attribute": "?"
             },
             {
                 "cost": "?",
                 "name": "テトラブレイク",
+                "lvl": "41",
+                "target": "?",
+                "attribute": "?"
+            },
+            {
+                "cost": "?",
+                "name": "?",
                 "lvl": "?",
                 "target": "?",
                 "attribute": "?"
             },
             {
                 "cost": "?",
-                "name": "？？？",
+                "name": "?",
                 "lvl": "?",
                 "target": "?",
                 "attribute": "?"
             },
             {
                 "cost": "?",
-                "name": "？？？",
-                "lvl": "?",
-                "target": "?",
-                "attribute": "?"
-            },
-            {
-                "cost": "?",
-                "name": "？？？",
+                "name": "?",
                 "lvl": "?",
                 "target": "?",
                 "attribute": "?"
