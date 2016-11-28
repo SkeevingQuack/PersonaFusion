@@ -1,0 +1,6 @@
+[package]
+name = "persona5fusion"
+version = "0.1.0"
+authors = ["Brad Aylsworth <Brad.Aylsworth@gmail.com>"]
+
+[dependencies]
